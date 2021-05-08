@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Player X turn"
+        android:id="@+id/status"
         android:layout_margin="25dp"
         android:textSize="24dp"
         android:textColor="@color/black"

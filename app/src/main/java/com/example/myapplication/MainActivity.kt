@@ -4,15 +4,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() , View.OnClickListener {
-    lateinit var board: Array<Array<Button>>                            //contains all id
+    lateinit var board: Array<Array<Button>>
+    //contains all id
     var Player = true                                                 //player1
     var count = 0                                                    //total steps
     var boardstatus = Array(3){IntArray(3)}                //kon jeet raha , depending ki o,1 kiska jeet hua
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+      //  val txtView = findViewById<TextView>(R.id.status)
         val button1 = findViewById<Button>(R.id.Button1)
         val button2 = findViewById<Button>(R.id.Button2)
         val button3 = findViewById<Button>(R.id.Button3)
@@ -43,7 +47,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
     private fun initializeboardStatus() {
         for(i in 0..2){
             for(j in 0..2){
-                boardstatus[i][j]=-1
+                boardstatus[i][j]=-1                  //i , j = 0, 0 rakha
                 board[i][j].isEnabled=true
                 board[i][j].text = ""
             }
@@ -80,7 +84,25 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
                 updateValue(row=2,coloumn=2,Pl=Player)
             }
         }
+        count++;
+        Player = !Player
+        if(Player){
+            upadateDisplay("Player X Turn")
+        }
+        else{
+            upadateDisplay("Player 0 Turn")
+        }
+        if(count==9){
+            upadateDisplay("Game Draw")
+        }
     }
+
+    private fun upadateDisplay(s: String) {
+        val txtview=findViewById<TextView>(R.id.status)
+        txtview.setText(s)
+    }
+
+
 
     private fun updateValue(row: Int, coloumn: Int, Pl: Boolean) {
         val text:String = if(Pl) "X" else "0"
