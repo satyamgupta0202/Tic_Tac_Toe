@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
       //  val txtView = findViewById<TextView>(R.id.status)
         val button1 = findViewById<Button>(R.id.Button1)
         val button2 = findViewById<Button>(R.id.Button2)
@@ -95,13 +96,70 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         if(count==9){
             upadateDisplay("Game Draw")
         }
+
+        checkWinner()
+    }
+
+    private fun checkWinner() {
+        for (i in 0..2){
+          if(boardstatus[i][0] == boardstatus[i][1] && boardstatus[i][0]== boardstatus[i][2]) {
+              if (boardstatus[i][0] == 1) {
+                  upadateDisplay("Player x is winner")
+                  break
+              } else if (boardstatus[i][0] == 0) {
+                  upadateDisplay("Player 0 is winner")
+                  break
+              }
+          }
+
+                ////
+             else if(boardstatus[0][i] == boardstatus[1][i] && boardstatus[0][i] == boardstatus[2][i]) {
+                 if(boardstatus[0][i]==1){
+                     upadateDisplay("Player x is winner")
+                     break
+                 }
+                 else if(boardstatus[0][i]==0){
+                     upadateDisplay("Player 0 is winner")
+                     break
+                 }
+             }
+
+                /////
+            else if(boardstatus[0][0]== boardstatus[1][1]  && boardstatus[0][0]==boardstatus[2][2]){
+                 if(boardstatus[0][0]==1){
+                     upadateDisplay("Player x is winner")
+                     break
+                 }
+                 else if(boardstatus[0][0]==0){
+                     upadateDisplay("Player 0 is winner")
+                     break
+                 }
+             }
+
+
+
+
+            }
+        }
     }
 
     private fun upadateDisplay(s: String) {
-        val txtview=findViewById<TextView>(R.id.status)
-        txtview.setText(s)
+        val txtsview=findViewById<TextView>(R.id.status)
+        txtsview.setText(s)
+
+        if(s.contains("winner")){
+            disableButton()
+        }
+
     }
 
+    private fun disableButton() {
+        for (i:Array<Button> in  board){                    //traversing all the id of the buttons
+            for(button:Button in i){
+                button.isEnabled = false
+            }
+        }
+    }
 
 
     private fun updateValue(row: Int, coloumn: Int, Pl: Boolean) {
