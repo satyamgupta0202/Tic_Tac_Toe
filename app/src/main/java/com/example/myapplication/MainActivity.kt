@@ -41,11 +41,13 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
         }
         initializeboardStatus()
         reset.setOnClickListener{
-
+            initializeboardStatus()
         }
     }
 
     private fun initializeboardStatus() {
+        upadateDisplay("Player X Turn")
+        count=0
         for(i in 0..2){
             for(j in 0..2){
                 boardstatus[i][j]=-1                  //i , j = 0, 0 rakha
@@ -84,6 +86,7 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
             R.id.Button9 ->{
                 updateValue(row=2,coloumn=2,Pl=Player)
             }
+
         }
         count++;
         Player = !Player
