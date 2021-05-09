@@ -101,44 +101,52 @@ class MainActivity : AppCompatActivity() , View.OnClickListener {
     }
 
     private fun checkWinner() {
-        for (i in 0..2){
-          if(boardstatus[i][0] == boardstatus[i][1] && boardstatus[i][0]== boardstatus[i][2]) {
-              if (boardstatus[i][0] == 1) {
-                  upadateDisplay("Player x is winner")
-                  break
-              } else if (boardstatus[i][0] == 0) {
-                  upadateDisplay("Player 0 is winner")
-                  break
-              }
-          }
+        for (i in 0..2) {
+            if (boardstatus[i][0] == boardstatus[i][1] && boardstatus[i][0] == boardstatus[i][2]) {
+                if (boardstatus[i][0] == 1) {
+                    upadateDisplay("Player x is winner")
+                    break
+                } else if (boardstatus[i][0] == 0) {
+                    upadateDisplay("Player 0 is winner")
+                    break
+                }
+            }
+        }
 
                 ////
-             else if(boardstatus[0][i] == boardstatus[1][i] && boardstatus[0][i] == boardstatus[2][i]) {
-                 if(boardstatus[0][i]==1){
-                     upadateDisplay("Player x is winner")
-                     break
-                 }
-                 else if(boardstatus[0][i]==0){
-                     upadateDisplay("Player 0 is winner")
-                     break
-                 }
-             }
 
-                /////
-            else if(boardstatus[0][0]== boardstatus[1][1]  && boardstatus[0][0]==boardstatus[2][2]){
-                 if(boardstatus[0][0]==1){
-                     upadateDisplay("Player x is winner")
-                     break
-                 }
-                 else if(boardstatus[0][0]==0){
-                     upadateDisplay("Player 0 is winner")
-                     break
-                 }
-             }
+        for (i in 0..2) {
+            if (boardstatus[0][i] == boardstatus[1][i] && boardstatus[1][i] == boardstatus[2][i]) {
+                if (boardstatus[0][i] == 1) {
+                    upadateDisplay("Player x is winner")
+                    break
+                } else if (boardstatus[0][i] == 0) {
+                    upadateDisplay("Player 0 is winner")
+                    break
+                }
+            }
+        }
 
-
-
-
+        for (i in 0..2) {
+            if (boardstatus[1][1] == boardstatus[2][2] && boardstatus[0][0] == boardstatus[2][2]) {
+                if (boardstatus[0][0] == 1) {
+                    upadateDisplay("Player x is winner")
+                    break
+                } else if (boardstatus[0][0] == 0) {
+                    upadateDisplay("Player 0 is winner")
+                    break
+                }
+            }
+        }
+        for (i in 0..2) {
+            if (boardstatus[0][2] == boardstatus[2][0] && boardstatus[2][0] == boardstatus[1][1]) {
+                if (boardstatus[1][1] == 1) {
+                    upadateDisplay("Player x is winner")
+                    break
+                } else if (boardstatus[1][1] == 0) {
+                    upadateDisplay("Player 0 is winner")
+                    break
+                }
             }
         }
     }
